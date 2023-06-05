@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Edit Post</h1>
+    <h1>Edit Project</h1>
 
 @endsection

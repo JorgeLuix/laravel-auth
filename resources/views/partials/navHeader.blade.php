@@ -14,7 +14,7 @@
             </div>
 
             <div class="item">
-                <a href="/Project">Projects</a>
+                <a href="{{ route('admin.projects.index') }}">Projects</a>
             </div>
 
             <div class="item">
