@@ -17,7 +17,7 @@ return [
             "repository_url" => "https://github.com/JorgeLuix/htmlcss-dropbox",
             "name" => "Dropbox",
             "image"=> "/resources/image/dropbox.png",
-            "description" => "App svilupatta con linguaggio LARAVEL, BLADE, JAVASCRIPT, SCSS."
+            "description" => "App svilupatta con linguaggio HTML, SCSS."
         ],
        [
             "repository_url" => "https://github.com/JorgeLuix/js-fizzbuzz",

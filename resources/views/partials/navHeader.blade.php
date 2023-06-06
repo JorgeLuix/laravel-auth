@@ -85,11 +85,11 @@
                     <div class="modal-body">
 
                         <div class="modal-line">
-                            <i class="fa-solid fa-house"></i><a href="/">Home</a>
+                            <i class="fa-solid fa-house"></i><a href="{{ url('/') }}">Home</a>
                         </div>
 
                         <div class="modal-line">
-                            <i class="fa-solid fa-cube"></i><a href="/services">Projects</a>
+                            <i class="fa-solid fa-cube"></i><a href="{{ route('admin.projects.index') }}">Projects</a>
                         </div>
 
                         <div class="modal-line">

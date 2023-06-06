@@ -21,22 +21,9 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body id="page-top">
-    <div id="wrapper">
-
-        @include('partials.sidebar')
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-                {{-- @include('partials.topbar') --}}
-                <div class="container-fluid">
-                    @yield('content')
-                </div>
-            </div>
-
-        </div>
+<body id="">
+    <div>
+        @yield('content')
 
     </div>
 </body>
