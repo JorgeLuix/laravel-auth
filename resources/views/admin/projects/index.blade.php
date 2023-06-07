@@ -9,21 +9,23 @@
             <nav class="navbar navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Dashboard</h2>
+                    <h2 class="fs-2 m-0">Projects</h2>
                 </div>
 
                 <div class="">
                     <a class="btn btn-success" href="{{ route('admin.projects.create') }}">Create new project</a>
                 </div>
-                @if (session()->has('message'))
+
+            </nav>
+
+            <div class="container-fluid px-4">
+
+                <div class="row g-3 my-2">
+                    @if (session()->has('message'))
                     <div class="alert alert-success">
                         {{ session()->get('message') }}
                     </div>
                 @endif
-            </nav>
-
-            <div class="container-fluid px-4">
-                <div class="row g-3 my-2">
                     <div class="col-md-3">
                         <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
                             <div>
@@ -66,7 +68,6 @@
 
             </div>
             <div class="container-fluid px-4">
-                <h1>Projects</h1>
                 <div class="row">
                     @foreach ($projects as $project)
                         <div class="col-md-6 col-lg-4">
@@ -93,4 +94,5 @@
             </div>
         </div>
     </div>
+    @include('partials.modal-delete')
 @endsection

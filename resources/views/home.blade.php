@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
-        <h3>Section title</h3>
-        <p>section content</p>
-    </section>
+
+<h1>JOrge</h1>
+@include('partials.skillsets')
 @endsection

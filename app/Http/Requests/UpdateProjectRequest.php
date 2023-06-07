@@ -22,17 +22,15 @@ class UpdateProjectRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+
     public function rules()
     {
         return [
-            'name' => ['required',
-            Rule::unique('projects')->ignore($this->project),
-            'max:150',
-            'min:3'
-
-        ],
-            'image' => 'nullable|max:255',
-            'description' => 'nullable'
+            'name' => 'required|string|max:150|unique:projects,name,' . $this->route('project')->id,
+            'slug' => 'required|string|unique:projects,slug,' . $this->route('project')->id,
+            'image' => 'nullable|image',
+            'description' => 'nullable|string',
+            'repository_url' => 'required|string',
         ];
     }
 

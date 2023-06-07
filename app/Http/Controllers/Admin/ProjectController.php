@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -42,8 +43,13 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
-        $slug = Str::slug($data['name'], '-');
+        $slug = Str::slug($request->name, '-');
         $data['slug'] = $slug;
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('uploads', $request->image);
+            $data['image'] = asset('storage/' . $image_path);
+        }
+
         $project = Project::create($data);
         return redirect()->route('admin.projects.show', $project->slug);
     }
@@ -82,8 +88,15 @@ class ProjectController extends Controller
         $data = $request->validated();
         $slug = Str::slug($request->name, '-');
         $data['slug'] = $slug;
+        if ($request->hasFile('image')) {
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+            $image_path = Storage::put('uploads', $request->image);
+            $data['image'] = asset('storage/' . $image_path);
+        }
         $project->update($data);
-        return redirect()->route('admin.projects.show', $project->slug)->with('message', 'Il proggetto è stato aggiornato');
+        return redirect()->route('admin.projects.show', $project->slug)->with('message', 'Il post è stato aggiornato');
     }
 
     /**
@@ -94,7 +107,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->image) {
+            Storage::delete($project->image);
+        }
         $project->delete();
-        return redirect()->route('admin.projects.index')->with('message', "Project with id: {$project->name} cancellato con successo !");
+        return redirect()->route('admin.projects.index')->with('message', "$project->name deleted successfully.");
     }
 }

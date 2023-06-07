@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <div class="navb-logo">
-            <img src="" alt="Portfolio">
+            <img src="" alt="Full-stack developer">
         </div>
 
         <div class="navb-items d-none d-xl-flex">
